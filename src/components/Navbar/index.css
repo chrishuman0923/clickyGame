@@ -1,0 +1,11 @@
+.customNav {
+  background-color: #472D9A;
+}
+
+.customNav * {
+  font-size: 1.1em;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  margin: 0.25em auto;
+}
