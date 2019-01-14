@@ -7,10 +7,12 @@ class App extends Component {
   state = {
     score: 0,
     topScore: 0,
+    gameMsg: 'Click an image to begin!',
     images: [
       'bass', 'clarinet', 'cymbals', 'flute', 'marimba', 'mellophone',
       'quads', 'sax', 'snare', 'trombone', 'trumpet', 'tuba'
-    ]
+    ],
+    clickedImages: []
   }
 
   componentDidMount() {
@@ -38,9 +40,35 @@ class App extends Component {
     return arr;
   }
 
-  // increment the score
+  handleImgClick = event => {
+    //Get image alt value
+    let val = event.target.alt.trim();
+    let i = this.state.clickedImages.indexOf(val);
+
+    console.log(
+      `Image_Val:${val}
+      \nIndex:${i}
+      \nClicked_Array:${this.state.clickedImages}`
+    );
+
+    //The image already exists in the clicked array
+    if(i > -1) {
+      //return this.resetScore();
+    }
+    
+    //Add value to state array
+    this.setState({clickedImages: this.state.clickedImages.push(val)});
+    this.updateScore();
+  }
+
+  // increment the score and change the in-game message
   updateScore = () => {
-    this.setState({score: this.state.score + 1});
+    this.setState(
+      {
+        score: this.state.score + 1,
+        gameMsg: 'You guessed correctly!'
+      }
+    );
   }
 
   // increment the top score
@@ -50,15 +78,22 @@ class App extends Component {
 
   // reset the score
   resetScore = () => {
-    this.setState({score: 0});
+    this.setState(
+      {
+        score: 0,
+        gameMsg: 'You guessed incorrectly!',
+        clickedImages: []
+      }
+    );
+
   }
 
   render() {
     return (
       <div>
-        <Navbar score={this.state.score} topScore={this.state.topScore}/>
+        <Navbar gameMsg={this.state.gameMsg} score={this.state.score} topScore={this.state.topScore}/>
         <Header />
-        <Game images={this.state.images} />
+        <Game clickHandler={this.handleImgClick} images={this.state.images} />
       </div>
     )
   }
