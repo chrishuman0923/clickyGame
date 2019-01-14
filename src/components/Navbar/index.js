@@ -9,7 +9,7 @@ function Navbar(props) {
           <a className='col' href='/'>
             <button className='btn mt-2 mb-2'>Clicky Game</button>
           </a>
-          <p className='col mt-3'>Click an image to begin!</p>
+          <p className='col mt-3'>{props.gameMsg}</p>
           <p className='col mt-3'>Score: {props.score} | Top Score: {props.topScore}</p>
         </div>
       </div>
