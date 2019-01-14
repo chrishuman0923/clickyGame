@@ -9,7 +9,7 @@ function Game(props) {
           //render each image
           props.images.map(image => {
             return (
-              <div key={image} className='col-3'>
+              <div onClick={props.clickHandler} key={image} className='col-3'>
                 <img src={require(`../../images/${image}.jpg`)}
                   className='mt-3 mb-3 customImg' alt={image}
                 />
