@@ -42,38 +42,48 @@ class App extends Component {
 
   handleImgClick = event => {
     //Get image alt value
-    let val = event.target.alt.trim();
-    let i = this.state.clickedImages.indexOf(val);
-
-    console.log(
-      `Image_Val:${val}
-      \nIndex:${i}
-      \nClicked_Array:${this.state.clickedImages}`
-    );
+    let val = event.target.alt.trim(),
+      i = this.state.clickedImages.indexOf(val),
+      tempArr = this.state.clickedImages;
 
     //The image already exists in the clicked array
     if(i > -1) {
-      //return this.resetScore();
+      this.resetScore();
+
+      //Shuffle image array
+      return this.setState({images: this.shuffleArr(this.state.images)});
     }
     
-    //Add value to state array
-    this.setState({clickedImages: this.state.clickedImages.push(val)});
+    //Add to temp array
+    tempArr.push(val);
+
+    //Add value to state array and update score
+    this.setState({clickedImages: tempArr});
     this.updateScore();
+
+    //Shuffle image array
+    this.setState({images: this.shuffleArr(this.state.images)});
   }
 
   // increment the score and change the in-game message
   updateScore = () => {
-    this.setState(
-      {
-        score: this.state.score + 1,
-        gameMsg: 'You guessed correctly!'
-      }
-    );
-  }
+    let tempScore = this.state.score;
 
-  // increment the top score
-  updateTopScore = () => {
-    this.setState({score: this.state.topScore + 1});
+    //If score + 1 is greater than the top score then update both, else just update score
+    (tempScore + 1 > this.state.topScore) ?
+      this.setState(
+        {
+          score: tempScore + 1,
+          topScore: tempScore + 1,
+          gameMsg: 'You guessed correctly!'
+        }
+      ) :
+      this.setState(
+        {
+          score: tempScore + 1,
+          gameMsg: 'You guessed correctly!'
+        }
+      );
   }
 
   // reset the score
@@ -85,7 +95,6 @@ class App extends Component {
         clickedImages: []
       }
     );
-
   }
 
   render() {
