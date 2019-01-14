@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
+import Header from './components/Header';
 
 class App extends Component {
   state = {
@@ -24,7 +25,10 @@ class App extends Component {
 
   render() {
     return (
-      <Navbar score={this.state.score} topScore={this.state.topScore}/>
+      <div>
+        <Navbar score={this.state.score} topScore={this.state.topScore}/>
+        <Header />
+      </div>
     )
   }
 }
