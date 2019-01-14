@@ -1,0 +1,13 @@
+.customImg {
+  height: 250px;
+  border: 5px solid black;
+  box-shadow: 5px 5px 5px gray;
+  transition: all 0.3s ease-in-out;
+  padding: 5px;
+}
+
+.customImg:hover {
+  border: 20px double #472D9A;
+  /* height: 210px; */
+  box-shadow: 10px 10px 5px gray;
+}
