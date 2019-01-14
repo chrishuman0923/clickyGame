@@ -1,0 +1,19 @@
+.customHeader {
+  background-image: url('../../images/diagonal-squares.png')
+}
+
+.customHeader * {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+#title {
+  font-size: 3em;
+  padding-top: .5em;
+}
+
+#instructions {
+  font-size: 1.5em;
+  padding-bottom: 1em;
+}
