@@ -1,6 +1,6 @@
 # Clicky Game!
 
-Clicky Game! is a react app that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The purpose of this app is to show the basic functionality and capablity of a React.js driven project. The deployed project can be found on Heroku [here](https://glacial-shelf-69024.herokuapp.com/).
+Clicky Game! is a react app that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The purpose of this app is to show the basic functionality and capability of a React.js driven project. The deployed project can be found on Heroku [here](https://glacial-shelf-69024.herokuapp.com/).
 
 # Functionality
 
