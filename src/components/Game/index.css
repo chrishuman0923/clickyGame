@@ -8,6 +8,19 @@
 
 .customImg:hover {
   border: 20px double #472D9A;
-  /* height: 210px; */
   box-shadow: 10px 10px 5px gray;
+}
+
+.gameMsg {
+  font-size: 2em;
+  text-align: center;
+  margin: 10px;
+}
+
+.gameMsg.correct {
+  color: green;
+}
+
+.gameMsg.incorrect {
+  color: red;
 }

@@ -7,6 +7,7 @@ class App extends Component {
   state = {
     score: 0,
     topScore: 0,
+    guessSts: false,
     gameMsg: 'Click an image to begin!',
     images: [
       'bass', 'clarinet', 'cymbals', 'flute', 'marimba', 'mellophone',
@@ -19,6 +20,7 @@ class App extends Component {
     this.setState({images: this.shuffleArr(this.state.images)});
   }
 
+  //function to shuffle array
   shuffleArr = arr => {
     let ctr = arr.length,
       temp,
@@ -69,21 +71,15 @@ class App extends Component {
   updateScore = () => {
     let tempScore = this.state.score;
 
-    //If score + 1 is greater than the top score then update both, else just update score
-    (tempScore + 1 > this.state.topScore) ?
-      this.setState(
-        {
-          score: tempScore + 1,
-          topScore: tempScore + 1,
-          gameMsg: 'You guessed correctly!'
-        }
-      ) :
-      this.setState(
-        {
-          score: tempScore + 1,
-          gameMsg: 'You guessed correctly!'
-        }
-      );
+    this.setState(
+      {
+        score: tempScore + 1,
+        //If score + 1 is greater than the top score then update both, else just update score
+        topScore: (tempScore + 1 > this.state.topScore) ? tempScore + 1 : this.state.topScore,
+        guessSts: true,
+        gameMsg: 'You guessed correctly!'
+      }
+    )
   }
 
   // reset the score
@@ -91,6 +87,7 @@ class App extends Component {
     this.setState(
       {
         score: 0,
+        guessSts: false,
         gameMsg: 'You guessed incorrectly!',
         clickedImages: []
       }
@@ -100,9 +97,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar gameMsg={this.state.gameMsg} score={this.state.score} topScore={this.state.topScore}/>
+        <Navbar score={this.state.score} topScore={this.state.topScore}/>
         <Header />
-        <Game clickHandler={this.handleImgClick} images={this.state.images} />
+        <Game clickHandler={this.handleImgClick} images={this.state.images}
+          gameMsg={this.state.gameMsg} guessSts={this.state.guessSts}
+        />
       </div>
     )
   }

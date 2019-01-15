@@ -4,6 +4,13 @@ import './index.css';
 function Game(props) {
   return (
     <div className='container'>
+      <p className=
+        //Nested ternary operators to determine which classes to apply to <p>
+        {
+          (props.gameMsg==='Click an image to begin!') ? 'gameMsg' : 
+            (props.guessSts) ? 'gameMsg correct' : ' gameMsg incorrect'
+        }
+      >{props.gameMsg}</p>
       <div className='row'>
         {
           //render each image
