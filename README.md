@@ -26,4 +26,4 @@ All game functionality is taking place without the page being refreshed. Using R
 - Heroku
 
 ## Future Enhancements
-A future enhancement would allow the user to toggle game difficulty by being able to alter how many images are generated.
+A future enhancement would allow the user to change the difficulty of the game by altering how many rows of images are displayed.
